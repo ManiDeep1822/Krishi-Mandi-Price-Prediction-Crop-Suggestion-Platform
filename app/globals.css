@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    color: #1e293b;
+    background: #f4f6fa;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Inter', 'Noto Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Custom Scrollbar for Government Portal */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Enterprise Layout Container */
+.enterprise-container {
+  width: 100%;
+  max-width: 1560px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .enterprise-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .enterprise-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Official Indian Flag Tricolor Strip */
+.gov-tricolor-bar {
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #ff9933 0%, #ff9933 33.3%, #ffffff 33.3%, #ffffff 66.6%, #138808 66.6%, #138808 100%);
+}
+
+/* Government Enterprise Card: Sharp Institutional Grid */
+.gov-card {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 0;
+  box-shadow: none;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.gov-card:hover {
+  border-color: #64748b;
+}
+
+/* Official Government APMC Data Table (Strict Tabular Grid) */
+.gov-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #cbd5e1;
+}
+
+.gov-table th {
+  background-color: #162f6a;
+  color: #ffffff;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.6rem 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+  border: 1px solid #0e204a;
+}
+
+.gov-table td {
+  padding: 0.6rem 0.85rem;
+  border: 1px solid #e2e8f0;
+  font-size: 0.8125rem;
+  color: #1e293b;
+  white-space: nowrap;
+}
+
+.gov-table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.gov-table tbody tr:hover td {
+  background-color: #eff6ff;
+}
+
+/* Truncate utility */
+.truncate-safe {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Disable number spinner arrows across browsers */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Clean Print Layout for Official Government Mandi Bulletins & Gate Passes */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 12mm;
+  }
+
+  /* Universal print hides */
+  header, nav, footer, .print\:hidden {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Strict Single-Page Isolation when printing Gate Pass */
+  body.gatepass-modal-open #main-content,
+  body.printing-gatepass #main-content {
+    display: none !important;
+  }
+
+  body.gatepass-modal-open .gatepass-modal-backdrop,
+  body.printing-gatepass .gatepass-modal-backdrop {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    overflow: visible !important;
+    inset: auto !important;
+    z-index: auto !important;
+  }
+
+  body.gatepass-modal-open .gatepass-modal-card,
+  body.printing-gatepass .gatepass-modal-card {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    border: 2px solid #0f172a !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  .gov-card {
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+  }
+}
+
+/* GIGW 3.0 Standard Accessibility: Font Sizing */
+html[data-font-size="small"] {
+  font-size: 90%;
+}
+html[data-font-size="normal"] {
+  font-size: 100%;
+}
+html[data-font-size="large"] {
+  font-size: 112.5%;
+}
+
+/* Skip to Main Content Link (Keyboard & Screen Reader Accessible) */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 1rem;
+  background: #ff9933;
+  color: #0e204a;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  z-index: 9999;
+  border-radius: 0 0 0.25rem 0.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  transition: top 0.15s ease-in-out;
+  text-decoration: underline;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* Hide scrollbar for ticker */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
