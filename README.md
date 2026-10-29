@@ -120,4 +120,4 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 - **Website Content:** Managed & Owned by Krishi Mandi Price Prediction & Crop Suggestion Platform Team.
 - **Design & Development:** Krishi Mandi Platform Technical Development & AI Cell.
-- **Open Source:** MIT License.
+- **Open Source:** MIT License
