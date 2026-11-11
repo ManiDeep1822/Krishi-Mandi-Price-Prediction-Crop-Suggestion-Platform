@@ -71,24 +71,8 @@ export async function POST(request) {
 
     // 2. If Gemini API key is configured, invoke Google Gemini Live AI with bounded parameters
     if (apiKey) {
-      try {
-        const genAI = new GoogleGenerativeAI(apiKey);
-        const modelNames = ["gemini-2.5-flash", "gemini-2.5-pro", "gemini-3.8-flash", "gemini-flash-latest"];
-        let model = null;
-
-        for (const mName of modelNames) {
-          try {
-            model = genAI.getGenerativeModel({ model: mName });
-            break;
-          } catch (e) {
-            // try next model
-          }
-        }
-        if (!model) {
-          model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-        }
-
-        const prompt = `You are a Chief Agricultural Economist and Senior Agronomist for the Indian Agricultural Research Institute (ICAR).
+      const candidateModels = ["gemini-3.8-flash", "gemini-3.7-flash", "gemini-flash-latest", "gemini-2.5-flash"];
+      const prompt = `You are a Chief Agricultural Economist and Senior Agronomist for the Indian Agricultural Research Institute (ICAR).
 Analyze the following active farm data and generate an enterprise advisory in strict valid JSON format (no markdown blocks, just raw JSON):
 - Location: District ${rawDistrict}, State ${rawState}, India
 - Active Crop: ${cropObj.name}
@@ -130,13 +114,19 @@ Output MUST be a single valid JSON object with exactly these keys:
   ]
 }`;
 
-        const result = await model.generateContent(prompt);
-        const text = result.response.text();
-        const cleanedText = text.replace(/```json/g, "").replace(/```/g, "").trim();
-        aiGeneratedInsights = JSON.parse(cleanedText);
-        aiGeneratedInsights.isLiveAi = true;
-      } catch (geminiError) {
-        console.warn("Gemini Live API error or key expired:", geminiError.message);
+      const genAI = new GoogleGenerativeAI(apiKey);
+      for (const mName of candidateModels) {
+        try {
+          const model = genAI.getGenerativeModel({ model: mName });
+          const result = await model.generateContent(prompt);
+          const text = result.response.text();
+          const cleanedText = text.replace(/```json/g, "").replace(/```/g, "").trim();
+          aiGeneratedInsights = JSON.parse(cleanedText);
+          aiGeneratedInsights.isLiveAi = true;
+          break;
+        } catch (geminiError) {
+          console.warn(`Gemini Live API fallback for model ${mName}:`, geminiError.message);
+        }
       }
     }
 
