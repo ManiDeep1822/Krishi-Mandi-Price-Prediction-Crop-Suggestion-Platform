@@ -97,7 +97,53 @@
     /* Print Page Rules */
     @page {
       size: A4 portrait;
-      margin: 20mm 15mm 20mm 15mm;
+      margin: 18mm 15mm 18mm 15mm;
+      @bottom-left {
+        content: "Lovely Professional University (LPU) • School of Computer Science & Engineering";
+        font-size: 8pt;
+        color: #64748b;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      @bottom-right {
+        content: "Page " counter(page);
+        font-size: 8pt;
+        font-weight: bold;
+        color: #1e293b;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+    }
+
+    /* Page Footer Styling for Screen and Print Viewports */
+    .doc-page-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 8px;
+      margin-top: 35px;
+      font-size: 8pt;
+      color: #64748b;
+    }
+
+    .doc-page-footer .footer-left {
+      font-weight: 600;
+    }
+
+    .doc-page-footer .footer-page {
+      font-weight: 800;
+      color: #162f6a;
+      background: #e2e8f0;
+      padding: 1px 7px;
+      border-radius: 2px;
+    }
+
+    @media print {
+      .doc-page-footer {
+        position: relative;
+        margin-top: 25px;
+        padding-top: 6px;
+        border-top: 1px solid #94a3b8;
+      }
     }
 
     @media print {
@@ -394,13 +440,13 @@
       <div class="project-title-box">
         <h1 class="project-title">KRISHI MANDI PRICE PREDICTION &amp; CROP SUGGESTION PLATFORM</h1>
         <div class="project-subtitle">National APMC Agricultural Market Intelligence &amp; Predictive Decision Support System</div>
-        <p style="margin-top: 12px; font-size: 9.5pt; color: #475569;">
+        <p style="margin-top: 12px; font-size: 9.5pt; color: #475569; text-align: center; max-width: 720px; margin-left: auto; margin-right: auto;">
           A Cloud-Native GovTech Platform Compliant with GIGW 3.0, Agmarknet OGD Protocols &amp; ICAR Agronomic Decision Support Framework
         </p>
       </div>
 
       <div class="submission-statement">
-        A Capstone Engineering Project Report submitted in partial fulfillment of the requirements for the award of the degree of<br />
+        A Project Report submitted in partial fulfillment of the requirements for the award of the degree of<br />
         <strong>BACHELOR OF TECHNOLOGY (B.TECH)</strong><br />
         in <strong>COMPUTER SCIENCE &amp; ENGINEERING</strong><br />
         at <strong>LOVELY PROFESSIONAL UNIVERSITY (LPU), PUNJAB</strong>
@@ -484,7 +530,7 @@
               </td>
               <td>
                 <strong>Group Project (4 Members)</strong><br />
-                Industry-Level Capstone
+                Industry-Level Engineering Project
               </td>
             </tr>
           </tbody>
@@ -510,7 +556,7 @@
     </div>
 
     <p>
-      We, the undersigned students of the <strong>School of Computer Science and Engineering (SCSE), Lovely Professional University (LPU), Punjab</strong>, hereby declare that the capstone engineering project report entitled <strong>"KRISHI MANDI PRICE PREDICTION &amp; CROP SUGGESTION PLATFORM"</strong> is an authentic, original record of our group project work carried out during the academic session 2026–2027.
+      We, the undersigned students of the <strong>School of Computer Science and Engineering (SCSE), Lovely Professional University (LPU), Punjab</strong>, hereby declare that the engineering project report entitled <strong>"KRISHI MANDI PRICE PREDICTION &amp; CROP SUGGESTION PLATFORM"</strong> is an authentic, original record of our group project work carried out during the academic session 2026–2027.
     </p>
 
     <p>
@@ -520,41 +566,36 @@
     <table class="report-table" style="margin-top: 14px;">
       <thead>
         <tr>
-          <th class="center-text" style="width: 6%;">No.</th>
-          <th style="width: 28%;">Student Full Name</th>
-          <th style="width: 22%;">LPU Registration &bull; Roll No.</th>
-          <th style="width: 32%;">Core Engineering Module Contribution</th>
-          <th class="center-text" style="width: 12%;">Signature</th>
+          <th class="center-text" style="width: 8%;">No.</th>
+          <th style="width: 34%;">Student Full Name</th>
+          <th style="width: 22%;">LPU Registration No.</th>
+          <th style="width: 36%;">Core Engineering Module Contribution</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="center-text">1</td>
           <td><strong>Isha</strong></td>
-          <td>Reg: <strong>12412796</strong> &bull; Roll No: <strong>28</strong></td>
+          <td><span style="font-family: monospace; font-weight: 700; font-size: 10pt;">12412796</span></td>
           <td>Full-Stack UI/UX Engineering &amp; GIGW 3.0 Accessibility</td>
-          <td class="center-text">_______________</td>
         </tr>
         <tr>
           <td class="center-text">2</td>
           <td><strong>Sumedha Modi</strong></td>
-          <td>Reg: <strong>12413772</strong> &bull; Roll No: <strong>29</strong></td>
+          <td><span style="font-family: monospace; font-weight: 700; font-size: 10pt;">12413772</span></td>
           <td>Agmarknet Live OGD API Pipeline &amp; Data Sanitization</td>
-          <td class="center-text">_______________</td>
         </tr>
         <tr>
           <td class="center-text">3</td>
           <td><strong>Indla Mohana Venkata Manideep</strong></td>
-          <td>Reg: <strong>12414127</strong> &bull; Roll No: <strong>30</strong></td>
+          <td><span style="font-family: monospace; font-weight: 700; font-size: 10pt;">12414127</span></td>
           <td>Predictive Price Forecasting Corridor &amp; System Architecture (Lead)</td>
-          <td class="center-text">_______________</td>
         </tr>
         <tr>
           <td class="center-text">4</td>
           <td><strong>Priyanshu Kumar</strong></td>
-          <td>Reg: <strong>12414453</strong> &bull; Roll No: <strong>31</strong></td>
+          <td><span style="font-family: monospace; font-weight: 700; font-size: 10pt;">12414453</span></td>
           <td>Google Gemini AI Advisory Engine &amp; 2D QR Security Matrix</td>
-          <td class="center-text">_______________</td>
         </tr>
       </tbody>
     </table>
@@ -563,33 +604,39 @@
       <strong>Academic Integrity Affirmation:</strong> This project has been developed as an industry-standard engineering solution. To the best of our knowledge, the matter embodied in this report has not been submitted previously to Lovely Professional University (LPU) or any other institution for the award of any degree or diploma.
     </div>
 
-    <!-- FOUR STUDENT SIGNATURE BLOCKS (NO FACULTY OR HOD) -->
-    <div style="margin-top: 45px;">
-      <h4 style="text-transform: uppercase; font-size: 9.5pt; color: #162f6a; margin-bottom: 20px; text-align: center; letter-spacing: 0.5px;">
-        Endorsed and Submitted by Group Members (Batch 2026–2027)
+    <!-- FOUR STUDENT VERIFICATION CARDS (NO ROLL NUMBERS OR SIGNATURES) -->
+    <div style="margin-top: 40px;">
+      <h4 style="text-transform: uppercase; font-size: 9.5pt; color: #162f6a; margin-bottom: 16px; text-align: center; letter-spacing: 0.5px;">
+        Submitted by Group Members &bull; School of Computer Science &amp; Engineering
       </h4>
       <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; text-align: center;">
-        <div style="border-top: 1px solid #475569; padding-top: 6px;">
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 8px; border-radius: 3px;">
           <div style="font-weight: 700; font-size: 9.5pt; color: #162f6a;">Isha</div>
-          <div style="font-size: 8pt; color: #64748b;">B.Tech CSE &bull; Roll No: 28</div>
-          <div style="font-size: 7.5pt; color: #0f172a; font-weight: 700;">Reg. No: 12412796</div>
+          <div style="font-size: 8pt; color: #64748b; margin: 2px 0;">B.Tech CSE &bull; SCSE</div>
+          <div style="font-size: 8.5pt; color: #0f172a; font-weight: 700; font-family: monospace;">12412796</div>
         </div>
-        <div style="border-top: 1px solid #475569; padding-top: 6px;">
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 8px; border-radius: 3px;">
           <div style="font-weight: 700; font-size: 9.5pt; color: #162f6a;">Sumedha Modi</div>
-          <div style="font-size: 8pt; color: #64748b;">B.Tech CSE &bull; Roll No: 29</div>
-          <div style="font-size: 7.5pt; color: #0f172a; font-weight: 700;">Reg. No: 12413772</div>
+          <div style="font-size: 8pt; color: #64748b; margin: 2px 0;">B.Tech CSE &bull; SCSE</div>
+          <div style="font-size: 8.5pt; color: #0f172a; font-weight: 700; font-family: monospace;">12413772</div>
         </div>
-        <div style="border-top: 1px solid #475569; padding-top: 6px;">
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 8px; border-radius: 3px;">
           <div style="font-weight: 700; font-size: 9.5pt; color: #162f6a;">Indla Mohana Venkata Manideep</div>
-          <div style="font-size: 8pt; color: #64748b;">B.Tech CSE &bull; Roll No: 30</div>
-          <div style="font-size: 7.5pt; color: #0f172a; font-weight: 700;">Reg. No: 12414127</div>
+          <div style="font-size: 8pt; color: #64748b; margin: 2px 0;">B.Tech CSE &bull; SCSE</div>
+          <div style="font-size: 8.5pt; color: #0f172a; font-weight: 700; font-family: monospace;">12414127</div>
         </div>
-        <div style="border-top: 1px solid #475569; padding-top: 6px;">
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 8px; border-radius: 3px;">
           <div style="font-weight: 700; font-size: 9.5pt; color: #162f6a;">Priyanshu Kumar</div>
-          <div style="font-size: 8pt; color: #64748b;">B.Tech CSE &bull; Roll No: 31</div>
-          <div style="font-size: 7.5pt; color: #0f172a; font-weight: 700;">Reg. No: 12414453</div>
+          <div style="font-size: 8pt; color: #64748b; margin: 2px 0;">B.Tech CSE &bull; SCSE</div>
+          <div style="font-size: 8.5pt; color: #0f172a; font-weight: 700; font-family: monospace;">12414453</div>
         </div>
       </div>
+    </div>
+
+    
+    <div class="doc-page-footer">
+      <span class="footer-left">Lovely Professional University (LPU) &bull; School of Computer Science &amp; Engineering</span>
+      <span class="footer-page">Page 2</span>
     </div>
 
     <!-- ==========================================================================
@@ -662,6 +709,12 @@
       </tbody>
     </table>
 
+    
+    <div class="doc-page-footer">
+      <span class="footer-left">Lovely Professional University (LPU) &bull; School of Computer Science &amp; Engineering</span>
+      <span class="footer-page">Page 3</span>
+    </div>
+
     <!-- ==========================================================================
          TABLE OF CONTENTS
          ========================================================================== -->
@@ -724,6 +777,12 @@
         </tr>
       </tbody>
     </table>
+
+    
+    <div class="doc-page-footer">
+      <span class="footer-left">Lovely Professional University (LPU) &bull; School of Computer Science &amp; Engineering</span>
+      <span class="footer-page">Page 4</span>
+    </div>
 
     <!-- ==========================================================================
          CHAPTER 1: INTRODUCTION & PROBLEM STATEMENT
@@ -790,6 +849,12 @@
         </tr>
       </tbody>
     </table>
+
+    
+    <div class="doc-page-footer">
+      <span class="footer-left">Lovely Professional University (LPU) &bull; School of Computer Science &amp; Engineering</span>
+      <span class="footer-page">Page 5</span>
+    </div>
 
     <!-- ==========================================================================
          CHAPTER 2: LITERATURE REVIEW & COMPARISON
@@ -872,6 +937,12 @@
         </tr>
       </tbody>
     </table>
+
+    
+    <div class="doc-page-footer">
+      <span class="footer-left">Lovely Professional University (LPU) &bull; School of Computer Science &amp; Engineering</span>
+      <span class="footer-page">Page 6</span>
+    </div>
 
     <!-- ==========================================================================
          CHAPTER 3: SOFTWARE REQUIREMENTS SPECIFICATION (SRS)
@@ -956,6 +1027,12 @@
       </tbody>
     </table>
 
+    
+    <div class="doc-page-footer">
+      <span class="footer-left">Lovely Professional University (LPU) &bull; School of Computer Science &amp; Engineering</span>
+      <span class="footer-page">Page 7</span>
+    </div>
+
     <!-- ==========================================================================
          CHAPTER 4: SYSTEM ARCHITECTURE & DATA FLOW
          ========================================================================== -->
@@ -1006,6 +1083,12 @@
       <li><strong>Process 3.0 (Logistics Optimization):</strong> Traverses 30+ mandis in `DISTRICT_MAP`, calculates Euclidean road distance, multiplies by vehicle freight multiplier, and derives net profit.</li>
       <li><strong>Process 4.0 (AI Advisory Generation):</strong> Constructs structured system prompt with farm metrics, queries Gemini API, validates JSON keys, or activates the ICAR agronomic ruleset on timeout.</li>
     </ol>
+
+    
+    <div class="doc-page-footer">
+      <span class="footer-left">Lovely Professional University (LPU) &bull; School of Computer Science &amp; Engineering</span>
+      <span class="footer-page">Page 8</span>
+    </div>
 
     <!-- ==========================================================================
          CHAPTER 5: DETAILED MODULE IMPLEMENTATION
@@ -1070,6 +1153,12 @@
       </tbody>
     </table>
 
+    
+    <div class="doc-page-footer">
+      <span class="footer-left">Lovely Professional University (LPU) &bull; School of Computer Science &amp; Engineering</span>
+      <span class="footer-page">Page 9</span>
+    </div>
+
     <div class="page-break"></div>
 
     <h3>5.5 Hybrid AI Decision Support System (`components/AIAdvisoryPanel.jsx` &amp; `/api/advisory`)</h3>
@@ -1114,6 +1203,12 @@
       <li><strong>Authentic Concentric Rubber Stamp:</strong> Rendered in classic administrative violet/purple (`#4338ca`) indelible ink with a subtle -3&deg; physical tilt, double concentric rings, star delimiters, and Hindi/English arc typography.</li>
       <li><strong>Single-Page A4 Print Isolation:</strong> Strict CSS `@page` and `@media print` rules completely suppress the background dashboard, guaranteeing a clean 1-page slip.</li>
     </ul>
+
+    
+    <div class="doc-page-footer">
+      <span class="footer-left">Lovely Professional University (LPU) &bull; School of Computer Science &amp; Engineering</span>
+      <span class="footer-page">Page 10</span>
+    </div>
 
     <!-- ==========================================================================
          CHAPTER 6: SECURITY & GOVERNANCE
@@ -1161,6 +1256,12 @@
       <li><strong>Skip to Main Content:</strong> Accessible keyboard anchor (`.skip-link`) allowing screen readers to bypass navigation bars.</li>
       <li><strong>Institutional Color Palette:</strong> Deep Royal Navy (`#162f6a`), Saffron Gold (`#ff9933`), and Agriculture Emerald Green (`#138808`), reflecting official GovTech portal standards.</li>
     </ul>
+
+    
+    <div class="doc-page-footer">
+      <span class="footer-left">Lovely Professional University (LPU) &bull; School of Computer Science &amp; Engineering</span>
+      <span class="footer-page">Page 11</span>
+    </div>
 
     <!-- ==========================================================================
          CHAPTER 7: TESTING & VALIDATION
@@ -1233,6 +1334,12 @@
       </tbody>
     </table>
 
+    
+    <div class="doc-page-footer">
+      <span class="footer-left">Lovely Professional University (LPU) &bull; School of Computer Science &amp; Engineering</span>
+      <span class="footer-page">Page 12</span>
+    </div>
+
     <!-- ==========================================================================
          CHAPTER 8: DEPLOYMENT & DEVOPS
          ========================================================================== -->
@@ -1287,6 +1394,12 @@
       </tbody>
     </table>
 
+    
+    <div class="doc-page-footer">
+      <span class="footer-left">Lovely Professional University (LPU) &bull; School of Computer Science &amp; Engineering</span>
+      <span class="footer-page">Page 13</span>
+    </div>
+
     <!-- ==========================================================================
          CHAPTER 9: CONCLUSION & FUTURE SCOPE
          ========================================================================== -->
@@ -1316,6 +1429,12 @@
       <li>Next.js Documentation, <em>"App Router, Server Components &amp; Edge API Routes"</em>, Vercel Inc., 2024.</li>
       <li>Google Generative AI SDK, <em>"Gemini API Documentation and Model Specifications"</em>, Google DeepMind, 2024.</li>
     </ol>
+
+    
+    <div class="doc-page-footer">
+      <span class="footer-left">Lovely Professional University (LPU) &bull; School of Computer Science &amp; Engineering</span>
+      <span class="footer-page">Page 14</span>
+    </div>
 
     <!-- FINAL SIGN-OFF FOOTER -->
     <div style="margin-top: 50px; padding-top: 20px; border-top: 2px solid #162f6a; text-align: center; font-size: 9.5pt; color: #475569;">
