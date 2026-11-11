@@ -25,3 +25,8 @@ yarn-error.log*
 .DS_Store
 *.pem
 Thumbs.db
+
+# Project Reports & PDF Documentation (Local Only - Never Push to GitHub)
+public/docs/
+*.pdf
+
