@@ -94,7 +94,7 @@
       background: #f5821f;
     }
 
-    /* Print Page Rules */
+    /* Print Page Setup */
     @page {
       size: A4 portrait;
       margin: 15mm 15mm 15mm 15mm;
@@ -111,6 +111,13 @@
         color: #1e293b;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       }
+    }
+
+    /* Screen Chapter Dividers */
+    h2.chapter-title {
+      margin-top: 45px;
+      padding-top: 25px;
+      border-top: 1px dashed #cbd5e1;
     }
 
     /* Page Footer Styling for Screen Viewport */
@@ -138,7 +145,7 @@
     }
 
     /* ==========================================================================
-       STRICT PRINT MEDIA RULES — PREVENTS AWKWARD MID-PAGE BREAKS
+       STRICT PRINT MEDIA RULES — PREVENTS ALL MID-PAGE BREAKS & BLANK WHITE PAGES
        ========================================================================== */
     @media print {
       body {
@@ -165,62 +172,112 @@
         display: none !important;
       }
 
-      /* Ensure Cover Page fits on EXACTLY 1 page without overflow */
+      /* Completely suppress any manual page-break dividers in print mode */
+      .page-break {
+        display: none !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+      }
+
+      /* 1. Cover Page: strictly fits on Page 1, no break-after (Declaration handles break-before) */
       .cover-container {
-        page-break-after: always !important;
-        break-after: page !important;
         page-break-inside: avoid !important;
         break-inside: avoid !important;
+        page-break-after: auto !important;
+        break-after: auto !important;
+        page-break-before: auto !important;
+        break-before: auto !important;
         min-height: auto !important;
+        height: auto !important;
+        max-height: none !important;
         padding: 0 !important;
         margin: 0 !important;
       }
 
+      .cover-container .tricolor-stripe {
+        margin-bottom: 8px !important;
+      }
+
       .cover-container img.lpu-main-logo {
-        height: 80px !important;
+        height: 70px !important;
+        margin-bottom: 4px !important;
+      }
+
+      .cover-container .institution-header {
+        font-size: 14pt !important;
+        margin-bottom: 2px !important;
+      }
+
+      .cover-container .department-sub {
+        font-size: 10pt !important;
+        margin-top: 2px !important;
         margin-bottom: 8px !important;
       }
 
       .project-title-box {
-        padding: 12px 14px !important;
-        margin: 10px 0 !important;
+        padding: 8px 12px !important;
+        margin: 8px 0 !important;
       }
 
       .project-title {
-        font-size: 17pt !important;
+        font-size: 15pt !important;
         line-height: 1.2 !important;
       }
 
       .project-subtitle {
-        font-size: 9.5pt !important;
-        margin-top: 6px !important;
+        font-size: 9pt !important;
+        margin-top: 4px !important;
       }
 
       .submission-statement {
-        font-size: 9.5pt !important;
-        margin: 10px 0 !important;
-        line-height: 1.4 !important;
+        font-size: 9pt !important;
+        margin: 8px 0 !important;
+        line-height: 1.35 !important;
       }
 
       .cover-container table.report-table {
-        margin: 8px 0 !important;
-        font-size: 8.5pt !important;
+        margin: 4px 0 !important;
+        font-size: 8pt !important;
       }
 
       .cover-container table.report-table th,
       .cover-container table.report-table td {
-        padding: 4px 8px !important;
+        padding: 3px 6px !important;
       }
 
-      /* Ensure Declaration Page is strictly isolated on Page 2 */
+      /* 2. Declaration Page: starts on Page 2, NO break-after */
       .declaration-page {
         page-break-before: always !important;
         break-before: page !important;
-        page-break-after: always !important;
-        break-after: page !important;
         page-break-inside: avoid !important;
         break-inside: avoid !important;
-        padding-top: 10px !important;
+        page-break-after: auto !important;
+        break-after: auto !important;
+        margin: 0 !important;
+        padding-top: 5mm !important;
+      }
+
+      /* 3. Major Chapter Titles: Single-point of truth for page breaks */
+      h2.chapter-title {
+        page-break-before: always !important;
+        break-before: page !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        border-top: none !important;
+      }
+
+      /* Section 5.5 starts cleanly on its own page without double breaking */
+      h3.break-before-page {
+        page-break-before: always !important;
+        break-before: page !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
       }
 
       /* Avoid breaking headings from following content (prevents orphan headers) */
@@ -229,19 +286,11 @@
         break-after: avoid !important;
       }
 
-      /* Major chapters start on clean page */
-      h2.chapter-title {
-        page-break-before: always !important;
-        break-before: page !important;
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-      }
-
       /* Tables: allow splitting across pages at row boundary, but NEVER slice a row in half */
       table.report-table {
         page-break-inside: auto !important;
         break-inside: auto !important;
-        margin: 12px 0 !important;
+        margin: 10px 0 !important;
       }
 
       table.report-table tr {
@@ -262,14 +311,6 @@
       p, li {
         orphans: 3 !important;
         widows: 3 !important;
-      }
-
-      .page-break {
-        page-break-before: always !important;
-        break-before: page !important;
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-        border-top: none !important;
       }
 
       a {
@@ -704,7 +745,7 @@
     <!-- ==========================================================================
          EXECUTIVE SUMMARY / ABSTRACT
          ========================================================================== -->
-    <div class="page-break"></div>
+    
 
     <h2 class="chapter-title">Executive Summary &amp; Abstract</h2>
     <div class="callout-box">
@@ -780,7 +821,7 @@
     <!-- ==========================================================================
          TABLE OF CONTENTS
          ========================================================================== -->
-    <div class="page-break"></div>
+    
 
     <h2 class="chapter-title">Table of Contents</h2>
     <table class="report-table">
@@ -849,7 +890,7 @@
     <!-- ==========================================================================
          CHAPTER 1: INTRODUCTION & PROBLEM STATEMENT
          ========================================================================== -->
-    <div class="page-break"></div>
+    
 
     <h2 class="chapter-title">1. Introduction &amp; Problem Statement</h2>
 
@@ -921,7 +962,7 @@
     <!-- ==========================================================================
          CHAPTER 2: LITERATURE REVIEW & COMPARISON
          ========================================================================== -->
-    <div class="page-break"></div>
+    
 
     <h2 class="chapter-title">2. Literature Review &amp; Comparative Analysis</h2>
 
@@ -1009,7 +1050,7 @@
     <!-- ==========================================================================
          CHAPTER 3: SOFTWARE REQUIREMENTS SPECIFICATION (SRS)
          ========================================================================== -->
-    <div class="page-break"></div>
+    
 
     <h2 class="chapter-title">3. Software Requirements Specification (SRS)</h2>
 
@@ -1098,7 +1139,7 @@
     <!-- ==========================================================================
          CHAPTER 4: SYSTEM ARCHITECTURE & DATA FLOW
          ========================================================================== -->
-    <div class="page-break"></div>
+    
 
     <h2 class="chapter-title">4. System Architecture &amp; Data Flow</h2>
 
@@ -1155,7 +1196,7 @@
     <!-- ==========================================================================
          CHAPTER 5: DETAILED MODULE IMPLEMENTATION
          ========================================================================== -->
-    <div class="page-break"></div>
+    
 
     <h2 class="chapter-title">5. Detailed Engineering Implementation</h2>
 
@@ -1221,9 +1262,9 @@
       <span class="footer-page">Page 9</span>
     </div>
 
-    <div class="page-break"></div>
+    
 
-    <h3>5.5 Hybrid AI Decision Support System (`components/AIAdvisoryPanel.jsx` &amp; `/api/advisory`)</h3>
+    <h3 class="break-before-page">5.5 Hybrid AI Decision Support System (`components/AIAdvisoryPanel.jsx` &amp; `/api/advisory`)</h3>
     <p>
       The platform adopts an enterprise hybrid AI paradigm. If an active Gemini API key is configured, a senior agronomic prompt is evaluated by Google's generative models (`gemini-3.8-flash`, `gemini-3.7-flash`, `gemini-flash-latest`), returning a validated JSON response. If the network is restricted, the platform immediately invokes its calibrated ICAR agronomic ruleset:
     </p>
@@ -1274,7 +1315,7 @@
     <!-- ==========================================================================
          CHAPTER 6: SECURITY & GOVERNANCE
          ========================================================================== -->
-    <div class="page-break"></div>
+    
 
     <h2 class="chapter-title">6. Security, GIGW 3.0 &amp; Governance</h2>
 
@@ -1327,7 +1368,7 @@
     <!-- ==========================================================================
          CHAPTER 7: TESTING & VALIDATION
          ========================================================================== -->
-    <div class="page-break"></div>
+    
 
     <h2 class="chapter-title">7. Quality Assurance &amp; Verification Matrix</h2>
 
@@ -1404,7 +1445,7 @@
     <!-- ==========================================================================
          CHAPTER 8: DEPLOYMENT & DEVOPS
          ========================================================================== -->
-    <div class="page-break"></div>
+    
 
     <h2 class="chapter-title">8. Cloud Deployment &amp; DevOps Guide</h2>
 
@@ -1464,7 +1505,7 @@
     <!-- ==========================================================================
          CHAPTER 9: CONCLUSION & FUTURE SCOPE
          ========================================================================== -->
-    <div class="page-break"></div>
+    
 
     <h2 class="chapter-title">9. Conclusion &amp; Future Scope</h2>
 
